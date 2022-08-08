@@ -1,0 +1,152 @@
+<!--
+<p class="Title">You can read more about configuring the igx-grid component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grids/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid" target="_blank">official documentation</a>.</p>
+<p class="features">Active Features:  <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/sorting" target="_blank">Sorting</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/filtering" target="_blank">Filtering</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/editing" target="_blank">Cell Editing</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/row-editing" target="_blank">Row Editing</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/groupby" target="_blank">Group By</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-resizing" target="_blank">Resizing</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/selection" target="_blank">Row Selection</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/paging" target="_blank">Paging</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-pinning" target="_blank">Column Pinning</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-moving" target="_blank">Column Moving</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-hiding" target="_blank">Column Hiding</a></p>
+-->
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="grid1.component.scss">
+
+<body>
+  <!-- Forked from a template on Tutorialzine: https://tutorialzine.com/2016/06/freebie-landing-page-template-with-flexbox -->
+  <header>
+    <h2><a href="hero">Life is a party!</a></h2>
+    <br>
+    
+   <!-- 
+    <nav>
+      <li><a href="#">Tours</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </nav>
+-->
+    
+    
+    
+  </header>
+
+  <section class="hero">
+    <div class="background-image"></div>
+    <div class="hero-content-area">
+      <h1 style="font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: #083e63;" >Ignite UI</h1>
+      <h3 style="font-weight:bold; font-family: Arial, Helvetica, sans-serif; color: #1271b1;">Using Grid</h3>
+      <div class="grid">
+        <igx-grid #grid1 [data]="localData" primaryKey="EmployeeID" width="100%" height="650px" 
+        [allowFiltering]="true" 
+        [allowFiltering]="true"
+        filterMode="excelStyleFilter" 
+        [rowEditable]="true" 
+        rowSelection="multiple" 
+        [moving]="true" 
+        cellSelection="multiple"
+        columnSelection="multiple"
+        displayDensity="cosy">
+        
+        <igx-column 
+        field="EmployeeID" 
+        header="Employee ID"  
+        width="150px" 
+        [sortable]="true" 
+        [filterable]="true" 
+        [editable]="true" 
+        [resizable]="true" 
+        [pinned]="true"
+        [hasSummary]="true">
+        </igx-column>
+        
+          <igx-column 
+          field="FirstName" 
+          header="First Name"  
+          width="150px" 
+          [sortable]="true" 
+          [filterable]="true" 
+          [editable]="true" 
+          [resizable]="true" 
+          [pinned]="true"
+          [hasSummary]="true">
+          </igx-column>
+        
+        
+          <igx-column 
+          field="LastName" 
+          header="Last Name" 
+          width="150px" 
+          [sortable]="true" 
+          [filterable]="true" 
+          [editable]="true" 
+          [resizable]="true" 
+          [pinned]="true">
+          </igx-column>
+        
+        
+          <igx-column 
+          field="Country" 
+          width="140px" 
+          [sortable]="true" 
+          [filterable]="true" 
+          [editable]="true" 
+          [resizable]="true" 
+          [groupable]="true">
+          </igx-column>
+        
+          <igx-column 
+          field="Age" 
+          width="110px" 
+          dataType="number" 
+          [sortable]="true" 
+          [filterable]="true" 
+          [editable]="true" 
+          [resizable]="true" 
+          [groupable]="true">
+          </igx-column>
+        
+        
+          <igx-column 
+          field="RegistererDate" 
+          header="Registerer Date" 
+          width="180px" 
+          dataType="date" 
+          [sortable]="true" 
+          [filterable]="true" 
+          [editable]="true" 
+          [resizable]="true">
+        
+            <ng-template igxCell let-value>
+                {{ value | date }}
+            </ng-template>
+          </igx-column>
+            <igx-column field="IsActive" header="Is Active" width="140px" dataType="boolean" [sortable]="true" [filterable]="true" [resizable]="true">
+            <ng-template igxCell let-cell="cell">
+              <igx-checkbox [ngModel]="cell.value" (ngModelChange)="cell.update($event)"></igx-checkbox>
+            </ng-template>
+          </igx-column>
+          <igx-grid-toolbar>
+            <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>
+            <igx-grid-toolbar-actions>
+              <igx-grid-toolbar-pinning></igx-grid-toolbar-pinning>
+              <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>
+              <igx-grid-toolbar-exporter></igx-grid-toolbar-exporter>
+            </igx-grid-toolbar-actions>
+          </igx-grid-toolbar>
+         
+        </igx-grid>
+        </div>
+
+    </div>
+  </section>
+
+
+
+  <footer>
+    <p>Images courtesy of <a href="http://Dribble.com/">Dribble</a>.</p>
+    <p>Vladimer Ace M. Laguisma</p>
+    <ul>
+      <li><a href="#"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+      <li><a href="#"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+      <li><a href="#"><i class="fa fa-snapchat-square fa-2x"></i></a></li>
+    </ul>
+  </footer>
+
+
+

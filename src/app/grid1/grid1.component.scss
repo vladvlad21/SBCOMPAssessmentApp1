@@ -59,6 +59,7 @@ section:not(.hero):nth-child(even) {
 	justify-content: center;
 }
 
+
 hr {
 	width: 250px;
 	height: 3px;
@@ -165,7 +166,7 @@ header nav li {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url("https://images.unsplash.com/photo-1505535162959-9bbcb4ab22d6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&s=2feeaf89ad55829f92c4bbc6ca8e83ce");
+	background-image: url("https://cdn.dribbble.com/users/49272/screenshots/5539919/tupel.gif");
 	background-size: cover;
 	z-index: -1;
 	background-color: #80a3db;
@@ -191,6 +192,7 @@ header nav li {
 .hero-content-area {
 	opacity: 0;
 	margin-top: 100px;
+    width: 90%;
 	animation: 1s slidefade 1s forwards;
 }
 
@@ -363,4 +365,17 @@ footer p {
 	footer ul li {
 		margin: 0 8px;
 	}
+
+    
+    
+}
+
+
+.grid{
+    margin: auto;
+    width: 80%;
+    border: 3px solid rgb(2, 91, 94);
+    padding: 10px;
+    box-shadow: #555;
+ border-radius: 5px;
 }
